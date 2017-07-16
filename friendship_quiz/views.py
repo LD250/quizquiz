@@ -32,3 +32,16 @@ class TakeQuiz(generic.FormView):
         quiz = get_object_or_404(Quiz, id=self.kwargs['quiz_id'])
         kwargs.update({'quiz': quiz})
         return kwargs
+
+    def form_valid(self, form):
+
+        self.success_url = '{0}?next={1}'.format(
+            reverse('social:begin', kwargs={'backend': 'facebook'}),
+            reverse('friendship_quiz:done')
+        )
+
+        return super(TakeQuiz, self).form_valid(form)
+
+
+class Done(generic.TemplateView):
+    template_name = 'friendship_quiz/done.html'
