@@ -7,4 +7,3 @@ class CalculateMatch(object):
         total = len(your_answers)
         match = self._get_answers_set(your_answers) & self._get_answers_set(friend_answers)
         return len(match) / total
-

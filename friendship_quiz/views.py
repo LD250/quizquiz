@@ -1,12 +1,11 @@
-from django.shortcuts import get_object_or_404, render
-from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import generic
 from django.db import transaction
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from friendship_quiz.calculate_match import CalculateMatch
-from .models import Choice, Question, Quiz, Answer
+from .models import Choice, Quiz, Answer
 from .forms import SelectQuestionsForm, AnswerQuestionsForm
 
 
