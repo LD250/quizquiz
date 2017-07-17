@@ -1,4 +1,14 @@
-<div>
-    {{ request }}
-    Done
-</div>
+{% extends 'quizquiz/base.html' %}
+{% load i18n %}
+
+{% block content %}
+    {{ super }}
+    {% if quiz_has_answers %}
+        {% trans 'Sharae this link with friends' %}
+        <a href="{{ site_url }}{{ quiz_url }}">{% trans 'Do we match each other?' %}</a>
+    {% else %}
+        {% trans 'Please take quiz again' %}
+        <a href="{{ site_ul }}{{ quiz_url }}">{% trans 'Do we match each other?' %}</a>
+
+    {% endif %}
+{% endblock %}

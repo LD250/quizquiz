@@ -23,8 +23,7 @@ class SelectQuestionsForm(forms.Form):
     def clean_questions(self):
         questions_count = len(self.cleaned_data['questions'])
         if questions_count < MINIMUM_QUESTIONS or questions_count > MAXIMUM_QUESTIONS:
-            self.add_error(
-                'questions',
+            raise forms.ValidationError(
                 self.error_messages['selected_count_not_correct']
             )
         return self.cleaned_data['questions']

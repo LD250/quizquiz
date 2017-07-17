@@ -1,7 +1,13 @@
-Answer questions
+{% extends 'quizquiz/base.html' %}
 
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Answer questions" />
-</form>
+{% block content %}
+    {{ super }}
+    Answer questions
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Answer questions" />
+    </form>
+{% endblock %}
+

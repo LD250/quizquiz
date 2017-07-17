@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django.conf import settings
+from django.contrib.sessions.models import Session
 
 
 class Question(models.Model):
@@ -27,6 +28,8 @@ class Answer(models.Model):
     choice = models.ForeignKey(Choice)
     quiz = models.ForeignKey(Quiz, related_name='answers')
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    # session = models.ForeignKey(Session)
+
 
     class Meta:
         unique_together = (('question', 'quiz', 'user'),)

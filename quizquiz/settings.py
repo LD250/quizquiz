@@ -58,7 +58,7 @@ ROOT_URLCONF = 'quizquiz.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,6 +68,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
+                'quizquiz.context_processors.site_settings'
             ],
         },
     },
@@ -130,8 +131,12 @@ STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'users.User'
 
+SESSION_SAVE_EVERY_REQUEST = True
+
+SITE_URL = 'http://localhost:8000'
+
 
 try:
-    from environment_settings import *
+    from .environment_settings import *
 except ImportError:
     pass
