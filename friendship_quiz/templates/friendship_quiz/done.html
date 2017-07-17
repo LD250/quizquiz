@@ -3,12 +3,17 @@
 
 {% block content %}
     {{ super }}
-    {% if quiz_has_answers %}
-        {% trans 'Sharae this link with friends' %}
-        <a href="{{ site_url }}{{ quiz_url }}">{% trans 'Do we match each other?' %}</a>
+    {% if quiz_url %}
+        {% trans 'Share this link with friends' %}
+        <pre>{{ site_url }}{{ quiz_url }}</pre>
     {% else %}
         {% trans 'Please take quiz again' %}
-        <a href="{{ site_ul }}{{ quiz_url }}">{% trans 'Do we match each other?' %}</a>
+        <a href="{{ site_url }}">{% trans 'Do we match each other?' %}</a>
+    {% endif %}
 
+    {% if match %}
+        {% blocktrans %}You match your friend {{ friend_name }}, {{ match }}{% endblocktrans %}
+        <br/>
+        <a href="{{ site_url }}">{% trans 'Create your own quiz' %}</a>
     {% endif %}
 {% endblock %}

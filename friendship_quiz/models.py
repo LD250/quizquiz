@@ -20,7 +20,7 @@ class Choice(models.Model):
 class Quiz(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     questions = models.ManyToManyField(Question)
-    # created_by = models.ForeignKey(settings.AUTH_USER_MODEL, null=True)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, null=True)
 
 
 class Answer(models.Model):
